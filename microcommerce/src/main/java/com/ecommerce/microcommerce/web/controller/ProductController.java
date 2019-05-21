@@ -1,9 +1,10 @@
 package com.ecommerce.microcommerce.web.controller;
 import com.ecommerce.microcommerce.dao.ProductDao;
 import com.ecommerce.microcommerce.model.Product;
+import com.ecommerce.microcommerce.model.Reclamation;
 import com.ecommerce.microcommerce.model.User;
 import com.ecommerce.microcommerce.repository.UserRepository;
-
+import com.ecommerce.microcommerce.repository.reclamationRepository;
 import com.ecommerce.microcommerce.model.Identifiant;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,26 +21,28 @@ import org.springframework.validation.annotation.Validated;
 
 @Controller
 public class ProductController {
-
-//	UserRepository userRepository;
+	@Autowired
+	UserRepository userRepository;
+	@Autowired
+	reclamationRepository reclamationRepository;
 	
-    @Autowired
-    private ProductDao productDao;
+//    @Autowired
+//    private ProductDao productDao;
     
     @Value("${welcome.message:test}")
     private String message = "Hello World";
     
     //Récupérer la liste des produits
-    @RequestMapping(value="/Produits", method=RequestMethod.GET)
-    public List<Product>listeProduits() {
-        return productDao.findAll();
-    }
-
-    //Récupérer un produit par son Id
-    @GetMapping(value="/Produits/{id}")
-    public Product afficherUnProduit(@PathVariable int id) {
-        return productDao.findById(id);
-    }
+//    @RequestMapping(value="/Produits", method=RequestMethod.GET)
+//    public List<Product>listeProduits() {
+//        return productDao.findAll();
+//    }
+//
+//    //Récupérer un produit par son Id
+//    @GetMapping(value="/Produits/{id}")
+//    public Product afficherUnProduit(@PathVariable int id) {
+//        return productDao.findById(id);
+//    }
     
     // Test HelloWorld
     @GetMapping(value="/hello")
@@ -64,29 +67,34 @@ public class ProductController {
     @PostMapping(value ="/Connexion")
     public String Connexion2(Model model, @ModelAttribute("Identifiant") Identifiant identifiant1, BindingResult result, final RedirectAttributes redirectAttributes) {
     	
-    	//System.out.println(identifiant1.getIdentifiant());
-    	//System.out.println(identifiant1.getMdp());
-    	//redirectAttributes.addFlashAttribute("flashIdentifiant", identifiant1);
-    	
+
     	String identifiant = identifiant1.getIdentifiant();
     	String mdp = identifiant1.getMdp();
+    	List<User> liste_User = getAllUser();
     	
-    	
-    	
-    	 	
-    	
-    	if (identifiant.equals("cyprien") && mdp.equals("miga")) {
+    	for (int i=0; i<liste_User.size(); i++) {
+    		System.out.println(liste_User.get(i).getFirstName());
+    		if (liste_User.get(i).getFirstName().equals(identifiant) && liste_User.get(i).getPassword().equals(mdp)) {
+    			return "Home";
+    		}
     		
-    		return "/Home";}
-    	else {
-    		return "Error";}
+    			
+    	}
+    	
+    	return "Error";
+    	
     }
     
-//    @GetMapping("/user")
-//    public List<User> getAllUser() {
-//        return userRepository.findAll();
-//    }
-//    
+    @ResponseBody
+    @GetMapping(value ="/user")
+    public List<User> getAllUser() {
+        return userRepository.findAll();
+    }
+    
+    @ResponseBody
+    public List<Reclamation> getAllReclamation(){
+    	return reclamationRepository.findAll();
+    }
     
     
 }
