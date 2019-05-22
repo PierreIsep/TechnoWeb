@@ -20,7 +20,9 @@ public class Reclamation {
 	private int nombre_vote;
 	
 	
-	
+	public Reclamation() {
+		
+	}
 	
 	public Reclamation(int id, @NotBlank String titre, @NotBlank String description, @NotBlank int nombre_vote) {
 		super();
@@ -56,3 +58,4 @@ public class Reclamation {
 	
 
 }
+
