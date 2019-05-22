@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,10 +22,13 @@ import org.springframework.validation.BindingResult;
 
 @Controller
 public class MigaController {
+	
 	@Autowired
 	UserRepository userRepository;
 	@Autowired
 	reclamationRepository reclamationRepository;
+	
+	
 	
 //    @Autowired
 //    private ProductDao productDao;
@@ -56,6 +60,15 @@ public class MigaController {
     	return "Connexion";
     }
     
+    @GetMapping(value = "/reclamation")
+    public String personList(Model model) {
+ 
+    	List<Reclamation> reclamations = getAllReclamation();
+    	System.out.println(reclamations.get(1).getTitre());
+        model.addAttribute("reclamations", reclamations);
+ 
+        return "Home";
+    }
     
     // se connecter
     @GetMapping(value = "/HomeConnexion")
@@ -85,6 +98,9 @@ public class MigaController {
     	
     }
     
+    
+    
+    
     @ResponseBody
     @GetMapping(value ="/user")
     public List<User> getAllUser() {
@@ -96,5 +112,6 @@ public class MigaController {
     	return reclamationRepository.findAll();
     }
     
+
     
 }
