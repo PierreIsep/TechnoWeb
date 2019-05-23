@@ -6,9 +6,10 @@ import com.isep.miga.model.Reclamation;
 import com.isep.miga.model.User;
 import com.isep.miga.repository.UserRepository;
 import com.isep.miga.repository.reclamationRepository;
+import com.isep.miga.dao.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -27,7 +28,8 @@ public class MigaController {
 	UserRepository userRepository;
 	@Autowired
 	reclamationRepository reclamationRepository;
-	
+	@Autowired
+    private ReclamationDao reclamationDAO;
 	
 	
 //    @Autowired
@@ -61,10 +63,10 @@ public class MigaController {
     }
     
     @GetMapping(value = "/reclamation")
-    public String personList(Model model) {
+    public String reclamationList(Model model) {
  
     	List<Reclamation> reclamations = getAllReclamation();
-    	System.out.println(reclamations.get(1).getTitre());
+    	//System.out.println(reclamations.get(1).getTitre());
         model.addAttribute("reclamations", reclamations);
  
         return "Home";
@@ -88,7 +90,8 @@ public class MigaController {
     	for (int i=0; i<liste_User.size(); i++) {
     		System.out.println(liste_User.get(i).getFirstName());
     		if (liste_User.get(i).getFirstName().equals(identifiant) && liste_User.get(i).getPassword().equals(mdp)) {
-    			return "Home";
+    			
+    			return "redirect:/reclamation";
     		}
     		
     			
@@ -96,6 +99,37 @@ public class MigaController {
     	
     	return "Error";
     	
+    }
+    
+    
+    //@PostMapping(value="/Ajouter_Reclamation")
+    @RequestMapping(
+    		  value = "/Ajouter_Reclamation", 
+    		  method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public String reclamation(Model model, @ModelAttribute("Reclamation") Reclamation reclamation1, BindingResult result, final RedirectAttributes redirectAttributes) {
+    	
+    	
+    	
+    	if (reclamation1.getTitre() != "" && reclamation1.getDescription() != "") {
+    		
+    		updateReclamation(reclamation1);
+    		return "Reclamation_Sucess";
+    		}
+    	else
+    		return "Error";
+    }
+    
+    @PutMapping (value = "/Reclamation_BDD")
+    public void updateReclamation(Reclamation reclamation) {
+    	
+        reclamationDAO.save(reclamation);
+        
+        
+    }
+    
+    @GetMapping(value="/proposer")
+    public String Proposer() {
+    	return "Proposer";
     }
     
     
