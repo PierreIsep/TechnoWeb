@@ -6,6 +6,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
+import org.springframework.beans.factory.annotation.Value;
+
 @Entity
 @Table(name="reclamation")
 public class Reclamation {
@@ -16,7 +18,8 @@ public class Reclamation {
 	private String titre;
 	@NotBlank
 	private String description;
-	@NotBlank
+	
+	@Value(value = "0")
 	private int nombre_vote;
 	
 	
@@ -58,4 +61,3 @@ public class Reclamation {
 	
 
 }
-
