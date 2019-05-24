@@ -1,6 +1,6 @@
 create database miga;
 
-create table user (int id, Varchar(50) first_Name, Varchar(50) last_Name, Varchar(50) password, int number_vote);
+create table user (id int, first_Name Varchar(50), last_Name Varchar(50), password Varchar(50), number_vote int);
 
-create table reclamation (int id, Varchar(50) titre, Text description, int nombre_vote);
+create table reclamation (id int, titre Varchar(50), description Text, nombre_vote int);
 
