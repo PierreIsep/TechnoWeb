@@ -24,8 +24,8 @@
 	
 <table border="1" class = "reclamation">
         <tr>
-          <th>First Name</th>
-          <th>Last Name</th>
+          <th>Titre</th>
+          <th>Description</th>
           <th> Voter </th>
         </tr>
         <form:form action="/Voter" modelAttribute= "Reclamation" method="post" >
@@ -38,7 +38,7 @@
         </tr>
         
         </c:forEach>
-        <-- <p><input type="submit" class="btn btn-success" value="Soumettre les votes"/></p> -->
+        <!-- <p><input type="submit" class="btn btn-success" value="Soumettre les votes"/></p> -->
         </form:form>
 </table>
 	</br>
