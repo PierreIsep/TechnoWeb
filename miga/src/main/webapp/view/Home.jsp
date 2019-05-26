@@ -38,7 +38,7 @@
         </tr>
         
         </c:forEach>
-        <p><input type="submit" class="btn btn-success" value="Soumettre les votes"/></p>
+        <-- <p><input type="submit" class="btn btn-success" value="Soumettre les votes"/></p> -->
         </form:form>
 </table>
 
