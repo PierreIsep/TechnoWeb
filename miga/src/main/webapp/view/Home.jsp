@@ -4,17 +4,21 @@
          <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
+
+<%@include file="Header.jsp" %>
+
 <html xmlns:th="http://www.thymeleaf.org">
 <!-- <html> -->
 <head>
 <meta charset="ISO-8859-1">
+<link rel="stylesheet" href="view/css/Home.css"/>
 <title>Home</title>
 </head>
 <body>
 
 
 	
-Welcome Home
+<h1>Welcome Home</h1>
 	
 
 	
