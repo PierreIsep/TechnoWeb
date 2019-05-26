@@ -22,7 +22,7 @@
 	
 
 	
-<table border="1">
+<table border="1" class = "reclamation">
         <tr>
           <th>First Name</th>
           <th>Last Name</th>
@@ -41,7 +41,9 @@
         <-- <p><input type="submit" class="btn btn-success" value="Soumettre les votes"/></p> -->
         </form:form>
 </table>
-
+	</br>
+	
+	
 <a href="proposer"> Proposer une réclamation </a>
 
 
