@@ -2,6 +2,9 @@
     pageEncoding="ISO-8859-1"%>
      <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<%@include file="Header.jsp" %>
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
@@ -11,7 +14,7 @@
 </head>
 <body>
 
-<h2> Proposer une réclamation</h2>
+<h2> Proposer une rÃ©clamation</h2>
 
 <form:form action="/Ajouter_Reclamation" modelAttribute= "Reclamation" method="post">
     
