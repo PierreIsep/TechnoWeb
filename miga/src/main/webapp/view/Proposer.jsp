@@ -11,6 +11,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Proposer reclamation</title>
+   <link rel="stylesheet" href="view/css/Connexion.css"/>
 </head>
 <body>
 
