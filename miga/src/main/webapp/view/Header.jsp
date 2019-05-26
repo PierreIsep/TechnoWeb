@@ -14,9 +14,9 @@
 
     <div class="col-sm-3" id="logo"> <a href="index.php?cible=controleUser">Logo MIGA</a></div>
 
-    <div class="col-sm-3"> Liste des réclamations</div>
+    <div class="col-sm-3"> Liste des rÃ©clamations</div>
 
-    <div class="col-sm-3"> Proposer une réclamation</div>
+    <div class="col-sm-3"> <a href = "proposer"> Proposer une rÃ©clamation</a></div>
 
     <div class="col-sm-3"> Autres</div>
 
