@@ -11,9 +11,25 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Proposer reclamation</title>
-   <link rel="stylesheet" href="view/css/Connexion.css"/>
+   <link rel="stylesheet" href="view/css/Proposer.css"/>
 </head>
 <body>
+
+<div id="menu">
+
+<h3> Classements </h3>
+
+<c:forEach  items="${reclamations}" var ="reclamation">
+        <ul>
+          <li>${reclamation.titre} : ${reclamation.nombre_vote}</li>  	
+          
+        </ul>
+</c:forEach>
+
+
+</div>
+
+<div id="contenue">
 
 <h2> Proposer une réclamation</h2>
 
@@ -28,11 +44,11 @@
         <label for="description">Description :</label>
         <textarea id="description" name="description"></textarea>
     </div>
-    <input type="submit" value="Ajouter Reclamation" class="sansLabel" />
+    <input type="submit" value="Ajouter" class="sansLabel" />
     
     </fieldset>
     
 </form:form>
-
+</div>
 </body>
 </html>
