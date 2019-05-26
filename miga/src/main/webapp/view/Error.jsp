@@ -8,7 +8,7 @@
 </head>
 <body>
 	
-	Erreur d'identification
+	Erreur
 	
 </body>
 </html>
