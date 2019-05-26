@@ -4,7 +4,7 @@
 	padding-right:15px;
 	padding-left:15px;
 	margin-right:auto;
-	margin-left:auto
+	margin-left:auto;
 	
 }
 .row{
@@ -22,11 +22,16 @@
 	float:left;
 	width:16vw;
 }
+
 #logo{
 	background-image: url("paper.gif");
 }
-body{
-	background-color:#87cefa;/*#4682b4;/**/
-}
+header {
+	font-family: "trebuchet ms", sans-serif;
+	font-size: 90%;
+	
+} 
+
+
 
 
