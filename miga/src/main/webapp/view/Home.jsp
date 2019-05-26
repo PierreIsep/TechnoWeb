@@ -14,15 +14,29 @@
 <link rel="stylesheet" href="view/css/Home.css"/>
 <title>Home</title>
 </head>
+
+
+
 <body>
 
+<div id="menu">
 
-	
-<h1>Welcome Home</h1>
-	
+<h3> Classements </h3>
 
+<c:forEach  items="${reclamations}" var ="reclamation">
+        <ul>
+          <li>${reclamation.titre} : ${reclamation.nombre_vote}</li>  	
+          
+        </ul>
+</c:forEach>
+
+
+</div>
 	
-<table border="1" class = "reclamation">
+Welcome Home 
+
+<div id="contenue">
+<table border="1" class="reclamation">
         <tr>
           <th>Titre</th>
           <th>Description</th>
@@ -38,13 +52,13 @@
         </tr>
         
         </c:forEach>
-        <!-- <p><input type="submit" class="btn btn-success" value="Soumettre les votes"/></p> -->
+<!--         <p><input type="submit" class="btn btn-success" value="Soumettre les votes"/></p> -->
         </form:form>
-</table>
-	</br>
-	
-	
-<a href="proposer"> Proposer une réclamation </a>
+</table></br>
+
+</div>
+
+<!-- <a href="proposer"> Proposer une réclamation </a> -->
 
 
 
