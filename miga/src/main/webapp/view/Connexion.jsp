@@ -4,7 +4,7 @@
 
 <%@include file="Header.jsp" %> 
 
-<html xmlns:th="http://www.thymeleaf.org">
+<html  xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
 <link rel="stylesheet" href="view/css/Connexion.css"/>

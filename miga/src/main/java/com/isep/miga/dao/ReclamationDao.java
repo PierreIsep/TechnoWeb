@@ -10,5 +10,5 @@ import com.isep.miga.model.Reclamation;
 public interface ReclamationDao extends JpaRepository<Reclamation, Integer> {
 	
 	
-
+	Reclamation findById(int id);
 }

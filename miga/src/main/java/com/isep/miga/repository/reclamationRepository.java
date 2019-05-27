@@ -7,4 +7,7 @@ import com.isep.miga.model.Reclamation;
 
 public interface reclamationRepository extends JpaRepository<Reclamation, Integer>{
 
+	
+	
+	
 }

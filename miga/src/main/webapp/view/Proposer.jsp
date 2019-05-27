@@ -17,7 +17,7 @@
 
 <div id="menu">
 
-<h3> Classements </h3>
+<h3> Classement </h3>
 
 <c:forEach  items="${reclamations}" var ="reclamation">
         <ul>
@@ -31,7 +31,7 @@
 
 <div id="contenue">
 
-<h2> Proposer une rÃ©clamation</h2>
+<h2> Proposer une réclamation</h2>
 
 <form:form action="/Ajouter_Reclamation" modelAttribute= "Reclamation" method="post">
     

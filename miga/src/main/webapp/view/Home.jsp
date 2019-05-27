@@ -7,7 +7,7 @@
 
 <%@include file="Header.jsp" %>
 
-<html xmlns:th="http://www.thymeleaf.org">
+<html create-session="ifRequired" xmlns:th="http://www.thymeleaf.org">
 <!-- <html> -->
 <head>
 <meta charset="ISO-8859-1">
@@ -21,7 +21,7 @@
 
 <div id="menu">
 
-<h3> Classements </h3>
+<h3> Classement </h3>
 
 <c:forEach  items="${reclamations}" var ="reclamation">
         <ul>
@@ -42,23 +42,24 @@ Welcome Home
           <th>Description</th>
           <th> Voter </th>
         </tr>
-        <form:form action="/Voter" modelAttribute= "Reclamation" method="post" >
+        <form:form action="/Voter" modelAttribute= "Vote" method="post" >
         <c:forEach  items="${reclamations}" var ="reclamation">
         <tr>
           <td>${reclamation.titre} </td>  	
           <td>${reclamation.description} </td>
-          <td><button type="submit" name = "choix${reclamation.id}" ></button>
-<%--           <td><input type="checkbox" name="choix${reclamation.id}" th:value = "${reclamations}" > </td> --%>
+<%--           <td><button type="submit" name = "choix${reclamation.id}" ></button> --%>
+			<td> ${reclamation.id}</td>
+          <td><input type="checkbox" name="id_Reclamation" value = "${reclamation.id}" > </td>
         </tr>
         
         </c:forEach>
-<!--         <p><input type="submit" class="btn btn-success" value="Soumettre les votes"/></p> -->
+         <p><input type="submit" class="btn btn-success" value="Soumettre les votes"/></p>
         </form:form>
 </table></br>
 
 </div>
 
-<!-- <a href="proposer"> Proposer une rÃ©clamation </a> -->
+<!-- <a href="proposer"> Proposer une réclamation </a> -->
 
 
 

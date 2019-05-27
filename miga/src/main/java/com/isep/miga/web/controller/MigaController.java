@@ -4,6 +4,7 @@ import com.isep.miga.model.Identifiant;
 
 import com.isep.miga.model.Reclamation;
 import com.isep.miga.model.User;
+import com.isep.miga.model.Vote;
 import com.isep.miga.repository.UserRepository;
 import com.isep.miga.repository.reclamationRepository;
 import com.isep.miga.dao.*;
@@ -14,9 +15,13 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 
 
@@ -31,9 +36,6 @@ public class MigaController {
 	@Autowired
     private ReclamationDao reclamationDAO;
 	
-	
-//    @Autowired
-//    private ProductDao productDao;
     
 //    @Value("${welcome.message:test}")
 //    private String message = "Hello World";
@@ -66,9 +68,22 @@ public class MigaController {
     public String reclamationList(Model model) {
  
     	List<Reclamation> reclamations = getAllReclamation();
-    	//System.out.println(reclamations.get(1).getTitre());
+    	
+       
+        Reclamation temps;
+        
+        for (int i=reclamations.size(); i>0;i--) {
+        	for (int j =1; j<i;j++) {
+        		if (reclamations.get(j-1).getNombre_vote() < reclamations.get(j).getNombre_vote()) {
+        			temps = reclamations.get(j-1);
+        			reclamations.set(j-1, reclamations.get(j));
+        			reclamations.set(j,temps);
+        		}
+        	}
+        	
+        }
         model.addAttribute("reclamations", reclamations);
- 
+        
         return "Home";
     }
     
@@ -128,12 +143,52 @@ public class MigaController {
     }
     
     @GetMapping(value="/proposer")
-    public String Proposer() {
+    public String Proposer(Model model) {
+    	List<Reclamation> reclamations = getAllReclamation();
+    	
+        
+        Reclamation temps;
+        
+        for (int i=reclamations.size(); i>0;i--) {
+        	for (int j =1; j<i;j++) {
+        		if (reclamations.get(j-1).getNombre_vote() < reclamations.get(j).getNombre_vote()) {
+        			temps = reclamations.get(j-1);
+        			reclamations.set(j-1, reclamations.get(j));
+        			reclamations.set(j,temps);
+        		}
+        	}
+        	
+        }
+        model.addAttribute("reclamations", reclamations);
     	return "Proposer";
     }
     
     
+    @PostMapping(value = "/Voter")
+    public String Vote(@ModelAttribute("Vote") Vote vote) {
+
+    	System.out.println(vote.getId_Reclamation());
+    	int id = vote.getId_Reclamation();
+    	
+    	
+
+    	
+    	Reclamation reclamation1 = reclamationDAO.findById(id);
+    	
+    	Voter(reclamation1);
+    	
+    	return ("redirect:/reclamation");
+    }
     
+    
+    
+    public void Voter(Reclamation reclamation) {
+    	int nombreVote = reclamation.getNombre_vote();
+    	System.out.println(nombreVote);
+    	reclamation.setNombre_vote(nombreVote + 1);
+    	System.out.println(reclamation.getNombre_vote());
+    	reclamationDAO.save(reclamation);
+    }
     
     @ResponseBody
     @GetMapping(value ="/user")

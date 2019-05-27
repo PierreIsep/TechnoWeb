@@ -27,6 +27,10 @@ public class Reclamation {
 		
 	}
 	
+	public Reclamation(int id) {
+		this.id = id;
+	}
+	
 	public Reclamation(int id, @NotBlank String titre, @NotBlank String description, @NotBlank int nombre_vote) {
 		super();
 		this.id = id;
