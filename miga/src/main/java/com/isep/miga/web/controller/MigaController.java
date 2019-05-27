@@ -5,6 +5,7 @@ import com.isep.miga.model.Identifiant;
 import com.isep.miga.model.Reclamation;
 import com.isep.miga.model.User;
 import com.isep.miga.repository.UserRepository;
+import com.isep.miga.repository.VoteRepository;
 import com.isep.miga.repository.reclamationRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,8 @@ public class MigaController {
 	UserRepository userRepository;
 	@Autowired
 	reclamationRepository reclamationRepository;
+    @Autowired
+    VoteRepository VoteRepository;
 	
 //    @Autowired
 //    private ProductDao productDao;
