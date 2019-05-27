@@ -29,9 +29,13 @@
 header {
 	font-family: "trebuchet ms", sans-serif;
 	font-size: 90%;
+	background-color: #a6c7ff;
 	
 } 
 
+body{
+	background-color: #a6c7ff;
+}
 
 
 
