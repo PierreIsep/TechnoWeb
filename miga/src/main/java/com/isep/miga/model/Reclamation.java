@@ -17,17 +17,17 @@ public class Reclamation {
 	@NotBlank
 	private String description;
 	@NotBlank
-	private int nombre_vote;
+	private int number_vote;
 	
 	
 	
 	
-	public Reclamation(int id, @NotBlank String titre, @NotBlank String description, @NotBlank int nombre_vote) {
+	public Reclamation(int id, @NotBlank String titre, @NotBlank String description, @NotBlank int number_vote) {
 		super();
 		this.id = id;
 		this.titre = titre;
 		this.description = description;
-		this.nombre_vote = nombre_vote;
+		this.number_vote = number_vote;
 	}
 	public int getId() {
 		return id;
@@ -47,11 +47,11 @@ public class Reclamation {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public int getNombre_vote() {
-		return nombre_vote;
+	public int getNumber_vote() {
+		return number_vote;
 	}
 	public void setNombre_vote(int nombre_vote) {
-		this.nombre_vote = nombre_vote;
+		this.number_vote = number_vote;
 	}
 	
 
